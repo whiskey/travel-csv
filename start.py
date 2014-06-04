@@ -21,8 +21,10 @@ class Application(ttk.Frame):
         self.quit_button.grid(padx=10, pady=4, sticky=tk.N+tk.E+tk.S+tk.W)
 
     def select_file(self):
-        filename = tkFileDialog.askopenfilename()
+        filename = tkFileDialog.askopenfilename(filetypes=[('CSV','.csv')])
         converter.analyze(filename)
+        # very simple exit
+        exit(0)
 
 
 if __name__ == '__main__':
@@ -36,3 +38,5 @@ if __name__ == '__main__':
     app = Application(root)
     app.focus()
     app.mainloop()
+
+    #converter.analyze('/Users/carsten/Dropbox/__work__/tmp/travelCSV/bookingsummary_04.06.14_converted.csv')

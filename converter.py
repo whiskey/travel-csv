@@ -4,6 +4,7 @@ import start
 
 import os
 import re
+import locale
 from datetime import datetime
 
 SEPARATOR = ';'
@@ -21,15 +22,24 @@ def analyze(path):
             line = line.rstrip(';\r\n')
             line += os.linesep
 
+            #line = convert_numbers(line)
             ## set separator
             line = line.replace(',', SEPARATOR)
 
             out_file.write(line)
         out_file.close()
+        print 'done.'
 
 
 def convert_numbers(line):
-    pass
+    loc = locale.getlocale(locale.LC_NUMERIC)
+    print loc
+
+    converted_line = line
+
+
+    exit(0)
+    return converted_line
 
 def convert_datetime(line):
     ## date/time conversion
