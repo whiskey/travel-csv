@@ -1,8 +1,9 @@
 __author__ = 'carsten'
 
+import start
+
 import os
 import re
-import fileinput
 from datetime import datetime
 
 SEPARATOR = ';'
@@ -18,7 +19,7 @@ def analyze(path):
             line = line.rstrip(';\r\n')
             line += os.linesep
 
-
+            ## set separator
             line = line.replace(',', SEPARATOR)
 
             out_file.write(line)
@@ -47,8 +48,3 @@ def convert_datetime(line):
     # write the line
     line = '\t '.join(tokens)
     return line
-
-
-if __name__ == '__main__':
-    p = 'bookingsummary_04.06.14.csv'
-    analyze(p)
