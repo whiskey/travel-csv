@@ -10,7 +10,9 @@ SEPARATOR = ';'
 
 def analyze(path):
     base = os.path.basename(path)
-    mod_base = '{base}_converted{ext}'.format(base=os.path.splitext(base)[0], ext=os.path.splitext(base)[1])
+    mod_filename = '{base}_converted{ext}'.format(base=os.path.splitext(base)[0], ext=os.path.splitext(base)[1])
+    mod_base = os.path.join(os.path.dirname(path), mod_filename)
+    print 'selected: {original}; converted: {converted}'.format(original=base, converted=mod_base)
 
     with open(path, 'rb') as in_file, open(mod_base, 'w') as out_file:
         for line in in_file:
@@ -25,6 +27,9 @@ def analyze(path):
             out_file.write(line)
         out_file.close()
 
+
+def convert_numbers(line):
+    pass
 
 def convert_datetime(line):
     ## date/time conversion
