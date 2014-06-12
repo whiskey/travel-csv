@@ -16,8 +16,6 @@ def analyze(path):
     print 'selected: {original}; converted: {converted}'.format(original=base, converted=mod_base)
 
     with open(path, 'rb') as in_file, open(mod_base, 'w') as out_file:
-        i = 0
-
         for line in in_file:
             line = line.replace(' ,', ',')
             line = line.replace('null', '')
@@ -29,10 +27,6 @@ def analyze(path):
             line = line.replace(',', SEPARATOR)
 
             out_file.write(line)
-            i += 1
-            if i == 20:
-                break
-
         out_file.close()
         print 'done.'
 
