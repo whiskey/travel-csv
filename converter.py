@@ -9,6 +9,7 @@ from datetime import datetime
 
 SEPARATOR = ';'
 
+
 def analyze(path):
     base = os.path.basename(path)
     mod_filename = '{base}_converted{ext}'.format(base=os.path.splitext(base)[0], ext=os.path.splitext(base)[1])
@@ -37,9 +38,8 @@ def convert_numbers(line):
 
     converted_line = line
 
-
-    exit(0)
     return converted_line
+
 
 def convert_datetime(line):
     ## date/time conversion
@@ -61,5 +61,5 @@ def convert_datetime(line):
         tokens.append(token)
 
     # write the line
-    line = '\t '.join(tokens)
+    line = (SEPARATOR+' ').join(tokens)
     return line
